@@ -1,6 +1,6 @@
 # React Redux Starter Kit
 
-[![Build Status](https://circleci.com/gh/prestonbernstein/react-redux-synthesizer/tree/master.svg?style=shileld&circle-token=:circle-token)](https://circleci.com/gh/prestonbernstein/react-redux-synthesizer/tree/master.svg?style=shield&circle-token=:circle-token)
+[![Build Status](https://circleci.com/gh/prestonbernstein/react-redux-synthesizer/tree/master.svg?style=shileld&circle-token=:circle-token)](https://circleci.com/gh/prestonbernstein/react-redux-synthesizer)
 [![dependencies](https://david-dm.org/prestonbernstein/react-redux-synthesizer.svg)](https://david-dm.org/prestonbernstein/react-redux-synthesizer)
 [![devDependency Status](https://david-dm.org/prestonbernstein/react-redux-synthesizer/dev-status.svg)](https://david-dm.org/prestonbernstein/react-redux-synthesizer#info=devDependencies)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
