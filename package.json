@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-starter-kit",
-  "version": "3.0.0-alpha.2",
-  "description": "Get started with React, Redux, and React-Router!",
+  "name": "react-redux-synthesizer",
+  "version": "0.0.2",
+  "description": "A synthesizer written in react-redux",
   "main": "index.js",
   "engines": {
     "node": ">=4.5.0",
@@ -71,9 +71,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davezuko/react-redux-starter-kit.git"
+    "url": "git+https://github.com/prestonbernstein/react-redux-synthesizer.git"
   },
-  "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
+  "author": "Preston Bernstein <prestonbernstein@gmail.com> (https://www.prestonbernstein.com)",
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.17.0",
