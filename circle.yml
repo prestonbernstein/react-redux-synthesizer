@@ -1,3 +1,15 @@
+machine:
+  timezone:
+    America/New_York
+  node:
+    version: 4.5.0
+
+general:
+  branches:
+    only:
+      - master
+      - develop
+
 deployment:
   production:
     branch: master
