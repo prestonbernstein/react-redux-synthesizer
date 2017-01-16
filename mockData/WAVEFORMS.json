@@ -1,0 +1,22 @@
+module.exports = {
+  SINE: {
+    id: 1,
+    type: 'sine',
+    userTerm: 'Sine wave'
+  },
+  SAWTOOTH: {
+    id: 2,
+    type: 'sawtooth',
+    userTerm: 'Saw-tooth wave'
+  },
+  SQUARE: {
+    id: 3,
+    type: 'square',
+    userTerm: 'Square wave'
+  },
+  TRIANGLE: {
+    id: 4,
+    type: 'triangle',
+    userTerm: 'Triangular wave'
+  }
+}
