@@ -15,6 +15,8 @@ export default (store) => ({
       /*  Add the reducer to the store on key 'counter'  */
       injectReducer(store, { key: 'counter', reducer })
 
+      console.log('nextState', nextState)
+
       /*  Return getComponent   */
       cb(null, Counter)
 

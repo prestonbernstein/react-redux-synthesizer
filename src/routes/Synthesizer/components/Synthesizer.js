@@ -9,10 +9,13 @@ export const Synthesizer = (props) => (
     <div className='control'>
       <label>Waveform</label>
       <select id='waveform'>
-        <option>sine</option>
-        <option>sawtooth</option>
-        <option>triangle</option>
-        <option>square</option>
+        {
+          props.waveforms.map(waveform =>
+            <option key={waveform.id}>
+              {waveform.type}
+            </option>
+          )
+        }
       </select>
     </div>
 
@@ -30,6 +33,10 @@ export const Synthesizer = (props) => (
   </div>
 )
 
-Synthesizer.propTypes = {}
+Synthesizer.propTypes = {
+  waveforms: React.PropTypes.arrayOf(
+    React.PropTypes.object
+  )
+}
 
 export default Synthesizer

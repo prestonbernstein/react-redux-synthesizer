@@ -1,3 +1,5 @@
+import WAVEFORMS_MOCK_DATA from '../../../../mockData/WAVEFORMS.json'
+
 // ------------------------------------
 // Constants
 // ------------------------------------
@@ -46,9 +48,7 @@ export const fetchWaveforms = () => {
   return (dispatch) => {
     dispatch(requestWaveforms())
 
-    return fetch('https://api.github.com/zen')
-      .then(data => data.text())
-      .then(text => dispatch(receiveWaveforms(text)))
+    return dispatch(receiveWaveforms(WAVEFORMS_MOCK_DATA.waveforms))
   }
 }
 

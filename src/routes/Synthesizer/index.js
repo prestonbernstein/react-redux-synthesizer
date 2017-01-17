@@ -1,4 +1,5 @@
 import { injectReducer } from '../../store/reducers'
+import { fetchWaveforms } from './modules/synthesizer'
 
 export default (store) => ({
   path : 'synthesizer',
@@ -14,6 +15,9 @@ export default (store) => ({
 
       /*  Add the reducer to the store on key 'synthesizer'  */
       injectReducer(store, { key: 'synthesizer', reducer })
+
+      // fetchWaveforms so option list is prepopulated
+      store.dispatch(fetchWaveforms())
 
       /*  Return getComponent   */
       cb(null, Synthesizer)
