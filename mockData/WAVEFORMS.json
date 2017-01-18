@@ -1,0 +1,20 @@
+{
+  "waveforms": [
+    {
+      "id": 1,
+      "type": "sine"
+    },
+    {
+      "id": 2,
+      "type": "sawtooth"
+    },
+    {
+      "id": 3,
+      "type": "square"
+    },
+    {
+      "id": 4,
+      "type": "triangle"
+    }
+  ]
+}

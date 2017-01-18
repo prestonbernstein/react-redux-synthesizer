@@ -1,7 +1,8 @@
 import { injectReducer } from '../../store/reducers'
+import { fetchWaveforms } from './modules/synthesizer'
 
 export default (store) => ({
-  path : 'counter',
+  path : 'synthesizer',
   /*  Async getComponent is only invoked when route matches   */
   getComponent (nextState, cb) {
     /*  Webpack - use 'require.ensure' to create a split point
@@ -9,18 +10,19 @@ export default (store) => ({
     require.ensure([], (require) => {
       /*  Webpack - use require callback to define
           dependencies for bundling   */
-      const Counter = require('./containers/CounterContainer').default
-      const reducer = require('./modules/counter').default
+      const Synthesizer = require('./containers/SynthesizerContainer').default
+      const reducer = require('./modules/synthesizer').default
 
-      /*  Add the reducer to the store on key 'counter'  */
-      injectReducer(store, { key: 'counter', reducer })
+      /*  Add the reducer to the store on key 'synthesizer'  */
+      injectReducer(store, { key: 'synthesizer', reducer })
 
-      console.log('nextState', nextState)
+      // fetchWaveforms so option list is prepopulated
+      store.dispatch(fetchWaveforms())
 
       /*  Return getComponent   */
-      cb(null, Counter)
+      cb(null, Synthesizer)
 
     /* Webpack named bundle   */
-    }, 'counter')
+    }, 'synthesizer')
   }
 })
