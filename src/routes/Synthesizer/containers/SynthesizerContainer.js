@@ -3,7 +3,8 @@ import {
   fetchWaveforms,
   changeWaveform,
   changeFrequency,
-  changeDuration
+  changeDuration,
+  playSound
 } from '../modules/synthesizer'
 
 /*  This is a container component. Notice it does not contain any JSX,
@@ -21,7 +22,8 @@ const mapDispatchToProps = {
   fetchWaveforms,
   changeWaveform,
   changeFrequency,
-  changeDuration
+  changeDuration,
+  playSound
 }
 
 const mapStateToProps = (state) => ({

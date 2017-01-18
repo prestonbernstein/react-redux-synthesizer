@@ -18,7 +18,8 @@ export const Synthesizer = (props) => (
         {
           props.waveforms.map(waveform =>
             <option
-              value={waveform.id}
+              key={waveform.id}
+              value={waveform.type}
             >
               {waveform.type}
             </option>
@@ -49,7 +50,7 @@ export const Synthesizer = (props) => (
       />
     </div>
 
-    <button>Play!</button>
+    <button onClick={props.playSound}>Play!</button>
   </div>
 )
 
@@ -57,12 +58,13 @@ Synthesizer.propTypes = {
   waveforms: React.PropTypes.arrayOf(
     React.PropTypes.object
   ),
-  waveform: React.PropTypes.number,
+  waveform: React.PropTypes.string,
   frequency: React.PropTypes.number,
   duration: React.PropTypes.number,
   changeWaveform: React.PropTypes.func,
   changeFrequency: React.PropTypes.func,
-  changeDuration: React.PropTypes.func
+  changeDuration: React.PropTypes.func,
+  playSound: React.PropTypes.func
 }
 
 export default Synthesizer
