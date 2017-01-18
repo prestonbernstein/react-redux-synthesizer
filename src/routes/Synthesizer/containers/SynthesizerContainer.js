@@ -40,22 +40,37 @@ class SynthesizerContainer extends React.Component {
     super(props)
 
     this.setWaveform = this.setWaveform.bind(this)
+    this.setFrequency = this.setFrequency.bind(this)
+    this.setDuration = this.setDuration.bind(this)
 
     this.state = {
-      waveform: props.waveforms[0].id
+      waveform: props.waveforms[0].id,
+      frequency: 250,
+      duration: 500
     }
   }
 
   setWaveform (e) {
-    console.log(e.target.value)
     this.setState({ waveform: e.target.value })
+  }
+
+  setFrequency (e) {
+    this.setState({ frequency: e.target.value })
+  }
+
+  setDuration (e) {
+    this.setState({ duration: e.target.value })
   }
 
   render () {
     return (
       <Synthesizer {...this.props}
-        setWaveform={this.setWaveform}
         waveform={this.state.waveform}
+        frequency={this.state.frequency}
+        duration={this.state.duration}
+        setWaveform={this.setWaveform}
+        setFrequency={this.setFrequency}
+        setDuration={this.setDuration}
       />
     )
   }

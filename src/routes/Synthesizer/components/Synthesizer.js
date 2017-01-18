@@ -7,9 +7,7 @@ export const Synthesizer = (props) => (
     <p>Play with dropdowns and hit 'play' to create a tone.</p>
 
     <div className='control'>
-      <label
-        htmlFor='waveform'
-      >
+      <label htmlFor='waveform'>
         Waveform
       </label>
       <select
@@ -30,13 +28,23 @@ export const Synthesizer = (props) => (
     </div>
 
     <div className='control'>
-      <label>Frequency</label>
-      <input />
+      <label htmlFor='frequency'>Frequency</label>
+      <input
+        id='frequency'
+        type='text'
+        value={props.frequency}
+        onChange={props.setFrequency}
+      />
     </div>
 
     <div className='control'>
-      <label>Duration (milliseconds)</label>
-      <input />
+      <label htmlFor='duration'>Duration (milliseconds)</label>
+      <input
+        id='duration'
+        type='text'
+        value={props.duration}
+        onChange={props.setDuration}
+      />
     </div>
 
     <button>Play!</button>
@@ -47,8 +55,12 @@ Synthesizer.propTypes = {
   waveforms: React.PropTypes.arrayOf(
     React.PropTypes.object
   ),
+  waveform: React.PropTypes.number,
+  frequency: React.PropTypes.number,
+  duration: React.PropTypes.number,
   setWaveform: React.PropTypes.func,
-  waveform: React.PropTypes.number
+  setFrequency: React.PropTypes.func,
+  setDuration: React.PropTypes.func
 }
 
 export default Synthesizer
