@@ -1,5 +1,6 @@
+import React from 'react'
 import { connect } from 'react-redux'
-import { fetchWaveforms, fetchWaveform } from '../modules/synthesizer'
+import { fetchWaveforms } from '../modules/synthesizer'
 
 /*  This is a container component. Notice it does not contain any JSX,
     nor does it import React. This component is **only** responsible for
@@ -13,8 +14,7 @@ import Synthesizer from '../components/Synthesizer'
     implementing our wrapper around increment; the component doesn't care   */
 
 const mapDispatchToProps = {
-  fetchWaveforms,
-  fetchWaveform
+  fetchWaveforms
 }
 
 const mapStateToProps = (state) => ({
@@ -35,4 +35,36 @@ const mapStateToProps = (state) => ({
     Selectors are composable. They can be used as input to other selectors.
     https://github.com/reactjs/reselect    */
 
-export default connect(mapStateToProps, mapDispatchToProps)(Synthesizer)
+class SynthesizerContainer extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.setWaveform = this.setWaveform.bind(this)
+
+    this.state = {
+      waveform: props.waveforms[0].id
+    }
+  }
+
+  setWaveform (e) {
+    console.log(e.target.value)
+    this.setState({ waveform: e.target.value })
+  }
+
+  render () {
+    return (
+      <Synthesizer {...this.props}
+        setWaveform={this.setWaveform}
+        waveform={this.state.waveform}
+      />
+    )
+  }
+}
+
+SynthesizerContainer.propTypes = {
+  waveforms: React.PropTypes.arrayOf(
+    React.PropTypes.object
+  )
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SynthesizerContainer)

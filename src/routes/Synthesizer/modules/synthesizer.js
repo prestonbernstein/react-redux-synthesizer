@@ -3,40 +3,22 @@ import WAVEFORMS_MOCK_DATA from '../../../../mockData/WAVEFORMS.json'
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const REQUEST_WAVEFORMS = 'REQUEST_WAVEFORMS'
-export const RECEIVE_WAVEFORMS = 'RECEIVE_WAVEFORMS'
-export const REQUEST_WAVEFORM = 'REQUEST_WAVEFORM'
-export const RECEIVE_WAVEFORM = 'RECEIVE_WAVEFORM'
+export const SYNTHESIZER_REQUEST_WAVEFORMS = 'SYNTHESIZER_REQUEST_WAVEFORMS'
+export const SYNTHESIZER_RECEIVE_WAVEFORMS = 'SYNTHESIZER_RECEIVE_WAVEFORMS'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
 export function requestWaveforms () {
   return {
-    type: REQUEST_WAVEFORMS
+    type: SYNTHESIZER_REQUEST_WAVEFORMS
   }
 }
 
 export function receiveWaveforms (waveforms) {
   return {
-    type: RECEIVE_WAVEFORMS,
+    type: SYNTHESIZER_RECEIVE_WAVEFORMS,
     payload: waveforms
-  }
-}
-
-export function requestWaveform () {
-  return {
-    type: REQUEST_WAVEFORM
-  }
-}
-
-export function receiveWaveform (value) {
-  return {
-    type: RECEIVE_WAVEFORM,
-    payload: {
-      id: value.id,
-      userTerm: value.userTerm
-    }
   }
 }
 
@@ -52,52 +34,20 @@ export const fetchWaveforms = () => {
   }
 }
 
-export const fetchWaveform = () => {
-  return (dispatch) => {
-    dispatch(requestWaveform())
-
-    return fetch('https://api.github.com/zen')
-      .then(data => data.text())
-      .then(text => dispatch(receiveWaveform(text)))
-  }
-}
-
-export const actions = {
-  requestWaveforms,
-  receiveWaveforms,
-  fetchWaveforms,
-  requestWaveform,
-  receiveWaveform,
-  fetchWaveform
-}
-
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [REQUEST_WAVEFORMS]: (state) => {
+  [SYNTHESIZER_REQUEST_WAVEFORMS]: (state) => {
     return ({
       ...state,
       fetching: true
     })
   },
-  [RECEIVE_WAVEFORMS]: (state, action) => {
+  [SYNTHESIZER_RECEIVE_WAVEFORMS]: (state, action) => {
     return ({
       ...state,
       waveforms: action.payload
-    })
-  },
-  [REQUEST_WAVEFORM]: (state) => {
-    return ({
-      ...state,
-      fetching: true
-    })
-  },
-  [RECEIVE_WAVEFORM]: (state, action) => {
-    return ({
-      ...state,
-      current: action.payload.id,
-      fetching: false
     })
   }
 }
@@ -107,8 +57,7 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 const initialState = {
   fetching: false,
-  waveforms: [],
-  current: null
+  waveforms: []
 }
 
 export default function synthesizerReducer (state = initialState, action) {

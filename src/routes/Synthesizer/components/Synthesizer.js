@@ -7,11 +7,21 @@ export const Synthesizer = (props) => (
     <p>Play with dropdowns and hit 'play' to create a tone.</p>
 
     <div className='control'>
-      <label>Waveform</label>
-      <select id='waveform'>
+      <label
+        htmlFor='waveform'
+      >
+        Waveform
+      </label>
+      <select
+        id='waveform'
+        onChange={props.setWaveform}
+        value={props.waveform}
+      >
         {
           props.waveforms.map(waveform =>
-            <option key={waveform.id}>
+            <option
+              value={waveform.id}
+            >
               {waveform.type}
             </option>
           )
@@ -36,7 +46,9 @@ export const Synthesizer = (props) => (
 Synthesizer.propTypes = {
   waveforms: React.PropTypes.arrayOf(
     React.PropTypes.object
-  )
+  ),
+  setWaveform: React.PropTypes.func,
+  waveform: React.PropTypes.number
 }
 
 export default Synthesizer
