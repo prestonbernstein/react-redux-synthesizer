@@ -5,6 +5,9 @@ import WAVEFORMS_MOCK_DATA from '../../../../mockData/WAVEFORMS.json'
 // ------------------------------------
 export const SYNTHESIZER_REQUEST_WAVEFORMS = 'SYNTHESIZER_REQUEST_WAVEFORMS'
 export const SYNTHESIZER_RECEIVE_WAVEFORMS = 'SYNTHESIZER_RECEIVE_WAVEFORMS'
+export const SYNTHESIZER_CHANGE_WAVEFORM = 'SYNTHESIZER_CHANGE_WAVEFORM'
+export const SYNTHESIZER_CHANGE_FREQUENCY = 'SYNTHESIZER_CHANGE_FREQUENCY'
+export const SYNTHESIZER_CHANGE_DURATION = 'SYNTHESIZER_CHANGE_DURATION'
 
 // ------------------------------------
 // Actions
@@ -19,6 +22,27 @@ export function receiveWaveforms (waveforms) {
   return {
     type: SYNTHESIZER_RECEIVE_WAVEFORMS,
     payload: waveforms
+  }
+}
+
+export function changeWaveform (e) {
+  return {
+    type: SYNTHESIZER_CHANGE_WAVEFORM,
+    payload: +e.target.value
+  }
+}
+
+export function changeFrequency (e) {
+  return {
+    type: SYNTHESIZER_CHANGE_FREQUENCY,
+    payload: +e.target.value
+  }
+}
+
+export function changeDuration (e) {
+  return {
+    type: SYNTHESIZER_CHANGE_DURATION,
+    payload: +e.target.value
   }
 }
 
@@ -49,6 +73,24 @@ const ACTION_HANDLERS = {
       ...state,
       waveforms: action.payload
     })
+  },
+  [SYNTHESIZER_CHANGE_WAVEFORM]: (state, action) => {
+    return ({
+      ...state,
+      waveform: action.payload
+    })
+  },
+  [SYNTHESIZER_CHANGE_FREQUENCY]: (state, action) => {
+    return ({
+      ...state,
+      frequency: action.payload
+    })
+  },
+  [SYNTHESIZER_CHANGE_DURATION]: (state, action) => {
+    return ({
+      ...state,
+      duration: action.payload
+    })
   }
 }
 
@@ -57,7 +99,10 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 const initialState = {
   fetching: false,
-  waveforms: []
+  waveforms: [],
+  waveform: 1,
+  frequency: 250,
+  duration: 500
 }
 
 export default function synthesizerReducer (state = initialState, action) {

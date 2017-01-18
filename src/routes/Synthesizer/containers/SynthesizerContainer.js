@@ -1,6 +1,10 @@
-import React from 'react'
 import { connect } from 'react-redux'
-import { fetchWaveforms } from '../modules/synthesizer'
+import {
+  fetchWaveforms,
+  changeWaveform,
+  changeFrequency,
+  changeDuration
+} from '../modules/synthesizer'
 
 /*  This is a container component. Notice it does not contain any JSX,
     nor does it import React. This component is **only** responsible for
@@ -14,11 +18,17 @@ import Synthesizer from '../components/Synthesizer'
     implementing our wrapper around increment; the component doesn't care   */
 
 const mapDispatchToProps = {
-  fetchWaveforms
+  fetchWaveforms,
+  changeWaveform,
+  changeFrequency,
+  changeDuration
 }
 
 const mapStateToProps = (state) => ({
-  waveforms: state.synthesizer.waveforms
+  waveforms: state.synthesizer.waveforms,
+  waveform: state.synthesizer.waveform,
+  frequency: state.synthesizer.frequency,
+  duration: state.synthesizer.duration
 })
 
 /*  Note: mapStateToProps is where you should use `reselect` to create selectors, ie:
@@ -35,51 +45,4 @@ const mapStateToProps = (state) => ({
     Selectors are composable. They can be used as input to other selectors.
     https://github.com/reactjs/reselect    */
 
-class SynthesizerContainer extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.setWaveform = this.setWaveform.bind(this)
-    this.setFrequency = this.setFrequency.bind(this)
-    this.setDuration = this.setDuration.bind(this)
-
-    this.state = {
-      waveform: props.waveforms[0].id,
-      frequency: 250,
-      duration: 500
-    }
-  }
-
-  setWaveform (e) {
-    this.setState({ waveform: e.target.value })
-  }
-
-  setFrequency (e) {
-    this.setState({ frequency: e.target.value })
-  }
-
-  setDuration (e) {
-    this.setState({ duration: e.target.value })
-  }
-
-  render () {
-    return (
-      <Synthesizer {...this.props}
-        waveform={this.state.waveform}
-        frequency={this.state.frequency}
-        duration={this.state.duration}
-        setWaveform={this.setWaveform}
-        setFrequency={this.setFrequency}
-        setDuration={this.setDuration}
-      />
-    )
-  }
-}
-
-SynthesizerContainer.propTypes = {
-  waveforms: React.PropTypes.arrayOf(
-    React.PropTypes.object
-  )
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SynthesizerContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(Synthesizer)

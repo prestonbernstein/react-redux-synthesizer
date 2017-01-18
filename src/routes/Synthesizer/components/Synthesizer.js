@@ -12,7 +12,7 @@ export const Synthesizer = (props) => (
       </label>
       <select
         id='waveform'
-        onChange={props.setWaveform}
+        onChange={props.changeWaveform}
         value={props.waveform}
       >
         {
@@ -31,9 +31,10 @@ export const Synthesizer = (props) => (
       <label htmlFor='frequency'>Frequency</label>
       <input
         id='frequency'
-        type='text'
+        type='number'
+        pattern='[0-9]*'
         value={props.frequency}
-        onChange={props.setFrequency}
+        onChange={props.changeFrequency}
       />
     </div>
 
@@ -41,9 +42,10 @@ export const Synthesizer = (props) => (
       <label htmlFor='duration'>Duration (milliseconds)</label>
       <input
         id='duration'
-        type='text'
+        type='number'
+        pattern='[0-9]*'
         value={props.duration}
-        onChange={props.setDuration}
+        onChange={props.changeDuration}
       />
     </div>
 
@@ -58,9 +60,9 @@ Synthesizer.propTypes = {
   waveform: React.PropTypes.number,
   frequency: React.PropTypes.number,
   duration: React.PropTypes.number,
-  setWaveform: React.PropTypes.func,
-  setFrequency: React.PropTypes.func,
-  setDuration: React.PropTypes.func
+  changeWaveform: React.PropTypes.func,
+  changeFrequency: React.PropTypes.func,
+  changeDuration: React.PropTypes.func
 }
 
 export default Synthesizer
