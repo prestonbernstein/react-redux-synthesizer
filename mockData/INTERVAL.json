@@ -1,0 +1,64 @@
+{
+  "interval": [
+    {
+      "id": 0,
+      "note": "C",
+      "frequency": 261.63
+    },
+    {
+      "id": 1,
+      "note": "C#",
+      "frequency": 277.18
+    },
+    {
+      "id": 2,
+      "note": "D",
+      "frequency": 293.66
+    },
+    {
+      "id": 3,
+      "note": "D#",
+      "frequency": 311.13
+    },
+    {
+      "id": 4,
+      "note": "E",
+      "frequency": 329.63
+    },
+    {
+      "id": 5,
+      "note": "F",
+      "frequency": 349.23
+    },
+    {
+      "id": 6,
+      "note": "F#",
+      "frequency": 369.99
+    },
+    {
+      "id": 7,
+      "note": "G",
+      "frequency": 392.00
+    },
+    {
+      "id": 8,
+      "note": "G#",
+      "frequency": 415.30
+    },
+    {
+      "id": 9,
+      "note": "A",
+      "frequency": 440.00
+    },
+    {
+      "id": 10,
+      "note": "A#",
+      "frequency": 932.33
+    },
+    {
+      "id": 11,
+      "note": "B",
+      "frequency": 987.77
+    }
+  ]
+}

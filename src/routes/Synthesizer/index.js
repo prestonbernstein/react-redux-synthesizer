@@ -1,5 +1,5 @@
 import { injectReducer } from '../../store/reducers'
-import { fetchWaveforms } from './modules/synthesizer'
+import { fetchWaveforms, fetchInterval } from './modules/synthesizer'
 
 export default (store) => ({
   path : 'synthesizer',
@@ -18,6 +18,9 @@ export default (store) => ({
 
       // fetchWaveforms so option list is prepopulated
       store.dispatch(fetchWaveforms())
+
+      // fetchInterval so notes are available
+      store.dispatch(fetchInterval())
 
       /*  Return getComponent   */
       cb(null, Synthesizer)

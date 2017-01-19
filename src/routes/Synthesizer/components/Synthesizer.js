@@ -20,6 +20,7 @@ export const Synthesizer = (props) => (
     />
 
     <Keybed
+      interval={props.interval}
       playSound={props.playSound}
     />
   </div>
@@ -27,6 +28,9 @@ export const Synthesizer = (props) => (
 
 Synthesizer.propTypes = {
   waveforms: React.PropTypes.arrayOf(
+    React.PropTypes.object
+  ),
+  interval: React.PropTypes.arrayOf(
     React.PropTypes.object
   ),
   waveform: React.PropTypes.string,
