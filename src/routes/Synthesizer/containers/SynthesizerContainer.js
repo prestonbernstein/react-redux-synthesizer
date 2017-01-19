@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import {
   fetchWaveforms,
+  fetchInterval,
   changeWaveform,
   changeFrequency,
   changeDuration,
@@ -20,6 +21,7 @@ import Synthesizer from '../components/Synthesizer'
 
 const mapDispatchToProps = {
   fetchWaveforms,
+  fetchInterval,
   changeWaveform,
   changeFrequency,
   changeDuration,
@@ -28,6 +30,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => ({
   waveforms: state.synthesizer.waveforms,
+  interval: state.synthesizer.interval,
   waveform: state.synthesizer.waveform,
   frequency: state.synthesizer.frequency,
   duration: state.synthesizer.duration

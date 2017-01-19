@@ -1,4 +1,5 @@
 import WAVEFORMS_MOCK_DATA from '../../../../mockData/WAVEFORMS.json'
+import INTERVAL_MOCK_DATA from '../../../../mockData/INTERVAL.json'
 import makeSound from '../utils/makeSound.js'
 
 // ------------------------------------
@@ -6,6 +7,8 @@ import makeSound from '../utils/makeSound.js'
 // ------------------------------------
 export const SYNTHESIZER_REQUEST_WAVEFORMS = 'SYNTHESIZER_REQUEST_WAVEFORMS'
 export const SYNTHESIZER_RECEIVE_WAVEFORMS = 'SYNTHESIZER_RECEIVE_WAVEFORMS'
+export const SYNTHESIZER_REQUEST_INTERVAL = 'SYNTHESIZER_REQUEST_INTERVAL'
+export const SYNTHESIZER_RECEIVE_INTERVAL = 'SYNTHESIZER_RECEIVE_INTERVAL'
 export const SYNTHESIZER_CHANGE_WAVEFORM = 'SYNTHESIZER_CHANGE_WAVEFORM'
 export const SYNTHESIZER_CHANGE_FREQUENCY = 'SYNTHESIZER_CHANGE_FREQUENCY'
 export const SYNTHESIZER_CHANGE_DURATION = 'SYNTHESIZER_CHANGE_DURATION'
@@ -27,6 +30,19 @@ export function receiveWaveforms (waveforms) {
   }
 }
 
+export function requestInterval () {
+  return {
+    type: SYNTHESIZER_REQUEST_INTERVAL
+  }
+}
+
+export function receiveInterval (interval) {
+  return {
+    type: SYNTHESIZER_RECEIVE_INTERVAL,
+    payload: interval
+  }
+}
+
 export function changeWaveform (e) {
   return {
     type: SYNTHESIZER_CHANGE_WAVEFORM,
@@ -34,11 +50,10 @@ export function changeWaveform (e) {
   }
 }
 
-export function changeFrequency (e) {
-  console.log(e.target.value)
+export function changeFrequency (value) {
   return {
     type: SYNTHESIZER_CHANGE_FREQUENCY,
-    payload: +e.target.value
+    payload: +value
   }
 }
 
@@ -57,9 +72,22 @@ export const fetchWaveforms = () => {
   }
 }
 
-export const playSound = () => {
+export const fetchInterval = () => {
+  return (dispatch) => {
+    dispatch(requestInterval())
+
+    return dispatch(receiveInterval(INTERVAL_MOCK_DATA.interval))
+  }
+}
+
+export const playSound = (value) => {
   return (dispatch, getState) => {
-    makeSound(getState().synthesizer.waveform, getState().synthesizer.frequency, getState().synthesizer.duration)
+    dispatch(changeFrequency(value))
+    makeSound(
+      getState().synthesizer.waveform,
+      getState().synthesizer.frequency,
+      getState().synthesizer.duration
+    )
   }
 }
 
@@ -70,13 +98,27 @@ const ACTION_HANDLERS = {
   [SYNTHESIZER_REQUEST_WAVEFORMS]: (state) => {
     return ({
       ...state,
-      fetching: true
+      fetchingWaveforms: true
     })
   },
   [SYNTHESIZER_RECEIVE_WAVEFORMS]: (state, action) => {
     return ({
       ...state,
-      waveforms: action.payload
+      waveforms: action.payload,
+      fetchingWaveforms: false
+    })
+  },
+  [SYNTHESIZER_REQUEST_INTERVAL]: (state) => {
+    return ({
+      ...state,
+      fetchingInterval: true
+    })
+  },
+  [SYNTHESIZER_RECEIVE_INTERVAL]: (state, action) => {
+    return ({
+      ...state,
+      interval: action.payload,
+      fetchingInterval: false
     })
   },
   [SYNTHESIZER_CHANGE_WAVEFORM]: (state, action) => {
@@ -108,8 +150,10 @@ const ACTION_HANDLERS = {
 // Reducer
 // ------------------------------------
 const initialState = {
-  fetching: false,
+  fetchingWaveforms: false,
+  fetchingInterval: false,
   waveforms: [],
+  interval: [],
   waveform: 'sine',
   frequency: 250,
   duration: 500
