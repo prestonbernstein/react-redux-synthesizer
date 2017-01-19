@@ -53,12 +53,12 @@
     {
       "id": 10,
       "note": "A#",
-      "frequency": 932.33
+      "frequency": 466.16
     },
     {
       "id": 11,
       "note": "B",
-      "frequency": 987.77
+      "frequency": 493.88
     }
   ]
 }
