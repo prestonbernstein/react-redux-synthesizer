@@ -1,56 +1,27 @@
 import React from 'react'
+import Controls from './Controls'
+import Keybed from './Keybed'
+
 import '../assets/Synthesizer.scss'
 
 export const Synthesizer = (props) => (
-  <div>
+  <div id='Synthesizer'>
     <h2>Synthesizer</h2>
     <p>Play with dropdowns and hit 'play' to create a tone.</p>
 
-    <div className='control'>
-      <label htmlFor='waveform'>
-        Waveform
-      </label>
-      <select
-        id='waveform'
-        onChange={props.changeWaveform}
-        value={props.waveform}
-      >
-        {
-          props.waveforms.map(waveform =>
-            <option
-              key={waveform.id}
-              value={waveform.type}
-            >
-              {waveform.type}
-            </option>
-          )
-        }
-      </select>
-    </div>
+    <Controls
+      waveforms={props.waveforms}
+      waveform={props.waveform}
+      duration={props.duration}
+      frequency={props.frequency}
+      changeWaveform={props.changeWaveform}
+      changeDuration={props.changeDuration}
+      changeFrequency={props.changeFrequency}
+    />
 
-    <div className='control'>
-      <label htmlFor='frequency'>Frequency</label>
-      <input
-        id='frequency'
-        type='number'
-        pattern='[0-9]*'
-        value={props.frequency}
-        onChange={props.changeFrequency}
-      />
-    </div>
-
-    <div className='control'>
-      <label htmlFor='duration'>Duration (milliseconds)</label>
-      <input
-        id='duration'
-        type='number'
-        pattern='[0-9]*'
-        value={props.duration}
-        onChange={props.changeDuration}
-      />
-    </div>
-
-    <button onClick={props.playSound}>Play!</button>
+    <Keybed
+      playSound={props.playSound}
+    />
   </div>
 )
 
