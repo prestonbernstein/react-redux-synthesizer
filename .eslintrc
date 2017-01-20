@@ -17,7 +17,8 @@
     "__TEST__"     : false,
     "__PROD__"     : false,
     "__COVERAGE__" : false,
-    "audioContext": false
+    "audioContext": false,
+    "webKitAudioContext": false,
   },
   "rules": {
     "key-spacing"          : 0,

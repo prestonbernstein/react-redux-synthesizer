@@ -25,7 +25,7 @@ const Controls = (props) => (
     </div>
 
     <div className='control'>
-      <label htmlFor='frequency'>Frequency</label>
+      <label htmlFor='pitchBend'>Pitch Bend</label>
       <input
         id='frequency'
         type='number'

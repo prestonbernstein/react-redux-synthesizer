@@ -2,6 +2,7 @@ import React from 'react'
 
 const Key = (props) => (
   <button
+    className='key'
     onClick={() => props.playSound(props.frequency)}
   >
     {props.note}

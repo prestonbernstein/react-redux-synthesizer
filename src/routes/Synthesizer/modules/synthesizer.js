@@ -51,6 +51,7 @@ export function changeWaveform (e) {
 }
 
 export function changeFrequency (value) {
+  console.log(value)
   return {
     type: SYNTHESIZER_CHANGE_FREQUENCY,
     payload: +value
